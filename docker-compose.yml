@@ -14,16 +14,16 @@ services:
     networks:
       - node_api_network
     depends_on:
-      sql_server:
+      sqlserver:
         condition: service_healthy
       redis:
         condition: service_healthy
 
-  sql_server:
+  sqlserver:
     build:
       context: .
       dockerfile: Dockerfile.sqlserver
-    container_name: sql_server
+    container_name: sqlserver
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=${SA_PASSWORD}
